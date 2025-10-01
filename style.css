@@ -1,0 +1,573 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: transparent;
+}
+
+/* Основная обёртка для трёх окон */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Музыкальный плеер слева */
+.music-side {
+    width: 400px;
+    flex-shrink: 0;
+}
+
+.music-side-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(40, 40, 40, 0.9);
+    border-radius: 15px 15px 0 0;
+}
+
+.player-header h2 {
+    margin: 0;
+    background: linear-gradient(45deg, #64ffda, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.player-body {
+    padding: 30px;
+}
+
+.track-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+#track-artwork {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-details {
+    flex: 1;
+}
+
+.track-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.track-artist {
+    color: #d0d0d0;
+    font-size: 0.9rem;
+}
+
+.player-controls {
+    margin-top: 25px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: rgba(100, 255, 218, 0.2);
+    border-color: #64ffda;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+.progress-bar {
+    margin-bottom: 15px;
+}
+
+.progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #64ffda;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    color: #d0d0d0;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.volume-control i {
+    color: #d0d0d0;
+    font-size: 1.2rem;
+}
+
+.volume {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #64ffda;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+}
+
+.playlist {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(20, 20, 20, 0.5);
+}
+
+.playlist-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.playlist-item:last-child {
+    border-bottom: none;
+}
+
+.playlist-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.playlist-item.active {
+    background: rgba(100, 255, 218, 0.1);
+    border-left: 3px solid #64ffda;
+}
+
+.playlist-cover {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.playlist-track-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.playlist-track-title {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-track-artist {
+    color: #d0d0d0;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlist::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(40, 40, 40, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-section {
+    padding: 40px 30px 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+.name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(45deg, #ffffff, #cccccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bio {
+    color: #d0d0d0;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.links-grid {
+    display: grid;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.link-card:hover::before {
+    left: 100%;
+}
+
+.link-card:hover {
+    background: rgba(100, 255, 218, 0.1);
+    border-color: #64ffda;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+}
+
+.link-card i {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    width: 24px;
+    text-align: center;
+}
+
+.link-card span {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.about-section {
+    padding: 30px;
+    background: rgba(30, 30, 30, 0.7);
+}
+
+.about-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.about-section p {
+    color: #d0d0d0;
+    line-height: 1.6;
+}
+
+/* Боковое окно System Info */
+.modal-side {
+    width: 458px;
+    flex-shrink: 0;
+}
+
+.modal-side-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(40, 40, 40, 0.9);
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    background: linear-gradient(45deg, #64ffda, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.info-section {
+    margin-bottom: 25px;
+}
+
+.info-section h3 {
+    color: #64ffda;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    border-left: 3px solid #64ffda;
+    padding-left: 10px;
+}
+
+.info-section p {
+    color: #e0e0e0;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+/* Стили для кнопки Arch Linux внутри модального окна */
+.modal-links {
+    margin: 25px 0;
+}
+
+.modal-links .link-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-links .link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.modal-links .link-card:hover::before {
+    left: 100%;
+}
+
+.modal-links .link-card:hover {
+    background: rgba(100, 255, 218, 0.1);
+    border-color: #64ffda;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+}
+
+.modal-links .link-card i {
+    font-size: 1.4rem;
+    margin-right: 15px;
+    width: 24px;
+    text-align: center;
+}
+
+.modal-links .link-card span {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.ascii-art {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: hidden;
+}
+
+.ascii-art pre {
+    color: #64ffda;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    line-height: 1.1;
+    margin: 0;
+    text-align: center;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .music-side,
+    .modal-side {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .container {
+        border-radius: 15px;
+        margin: 10px;
+    }
+    
+    .profile-section {
+        padding: 30px 20px 20px;
+    }
+    
+    .name {
+        font-size: 1.8rem;
+    }
+}
