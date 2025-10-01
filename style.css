@@ -27,7 +27,6 @@ body {
     background: transparent;
 }
 
-/* Основная обёртка для трёх окон */
 .main-wrapper {
     display: flex;
     justify-content: center;
@@ -40,7 +39,6 @@ body {
     animation: fadeInUp 0.8s ease-out;
 }
 
-/* Музыкальный плеер слева */
 .music-side {
     width: 400px;
     flex-shrink: 0;
@@ -146,6 +144,8 @@ body {
     background: rgba(255, 255, 255, 0.1);
     outline: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     cursor: pointer;
 }
 
@@ -159,12 +159,14 @@ body {
     box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
 }
 
-.time {
-    display: flex;
-    justify-content: space-between;
-    color: #d0d0d0;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
+.progress::-moz-range-thumb {
+    border: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #64ffda;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
 }
 
 .volume-control {
@@ -186,11 +188,23 @@ body {
     border-radius: 2px;
     outline: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     cursor: pointer;
 }
 
 .volume::-webkit-slider-thumb {
     -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #64ffda;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+}
+
+.volume::-moz-range-thumb {
+    border: none;
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -206,6 +220,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     background: rgba(20, 20, 20, 0.5);
+    scrollbar-color: #64ffda rgba(255, 255, 255, 0.1);
+    scrollbar-width: thin;
 }
 
 .playlist-item {
@@ -264,24 +280,22 @@ body {
 }
 
 .playlist::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .playlist::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
 }
 
 .playlist::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
+  background: #64ffda;
+  border-radius: 3px;
 }
 
 .playlist::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+  background: #5aeed0;
 }
-
-/* Основной контейнер */
 .container {
     max-width: 500px;
     width: 100%;
@@ -406,7 +420,6 @@ body {
     line-height: 1.6;
 }
 
-/* Боковое окно System Info */
 .modal-side {
     width: 458px;
     flex-shrink: 0;
@@ -462,7 +475,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Стили для кнопки Arch Linux внутри модального окна */
 .modal-links {
     margin: 25px 0;
 }
@@ -551,22 +563,18 @@ body {
         align-items: center;
         gap: 20px;
     }
-    
     .music-side,
     .modal-side {
         width: 100%;
         max-width: 500px;
     }
-    
     .container {
         border-radius: 15px;
         margin: 10px;
     }
-    
     .profile-section {
         padding: 30px 20px 20px;
     }
-    
     .name {
         font-size: 1.8rem;
     }
