@@ -5,6 +5,12 @@
     font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
+.prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
     color: #f0f0f0;
@@ -47,7 +53,7 @@ body {
 .music-side-content {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     border-radius: 20px;
-    border: 1px solid rgba(100, 255, 218, 0.3);
+    border: 1px solid rgba(167, 139, 250, 0.3);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     animation: fadeInUp 0.8s ease-out;
@@ -65,7 +71,7 @@ body {
 
 .player-header h2 {
     margin: 0;
-    background: linear-gradient(45deg, #64ffda, #ffffff);
+    background: linear-gradient(45deg, #a78bfa, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -127,10 +133,10 @@ body {
 }
 
 .control-btn:hover {
-    background: rgba(100, 255, 218, 0.2);
-    border-color: #64ffda;
+    background: rgba(167, 139, 250, 0.2);
+    border-color: #a78bfa;
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
 }
 
 .progress-bar {
@@ -154,9 +160,9 @@ body {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #64ffda;
+    background: #a78bfa;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
 }
 
 .progress::-moz-range-thumb {
@@ -164,9 +170,9 @@ body {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #64ffda;
+    background: #a78bfa;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
 }
 
 .volume-control {
@@ -198,9 +204,9 @@ body {
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: #64ffda;
+    background: #a78bfa;
     cursor: pointer;
-    box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+    box-shadow: 0 0 8px rgba(167, 139, 250, 0.5);
 }
 
 .volume::-moz-range-thumb {
@@ -208,9 +214,9 @@ body {
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: #64ffda;
+    background: #a78bfa;
     cursor: pointer;
-    box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+    box-shadow: 0 0 8px rgba(167, 139, 250, 0.5);
 }
 
 .playlist {
@@ -220,7 +226,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     background: rgba(20, 20, 20, 0.5);
-    scrollbar-color: #64ffda rgba(255, 255, 255, 0.1);
+    scrollbar-color: #a78bfa rgba(255, 255, 255, 0.1);
     scrollbar-width: thin;
 }
 
@@ -243,8 +249,8 @@ body {
 }
 
 .playlist-item.active {
-    background: rgba(100, 255, 218, 0.1);
-    border-left: 3px solid #64ffda;
+    background: rgba(167, 139, 250, 0.1);
+    border-left: 3px solid #a78bfa;
 }
 
 .playlist-cover {
@@ -289,13 +295,14 @@ body {
 }
 
 .playlist::-webkit-scrollbar-thumb {
-  background: #64ffda;
+  background: #a78bfa;
   border-radius: 3px;
 }
 
 .playlist::-webkit-scrollbar-thumb:hover {
-  background: #5aeed0;
+  background: #9580ff;
 }
+
 .container {
     max-width: 500px;
     width: 100%;
@@ -321,7 +328,7 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 3px solid #ffffff;
+    border: 2px solid #ffffff;
     margin-bottom: 20px;
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -376,7 +383,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.1), transparent);
     transition: left 0.6s;
 }
 
@@ -385,10 +392,10 @@ body {
 }
 
 .link-card:hover {
-    background: rgba(100, 255, 218, 0.1);
-    border-color: #64ffda;
+    background: rgba(167, 139, 250, 0.1);
+    border-color: #a78bfa;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.2);
 }
 
 .link-card i {
@@ -428,7 +435,7 @@ body {
 .modal-side-content {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     border-radius: 20px;
-    border: 1px solid rgba(100, 255, 218, 0.3);
+    border: 1px solid rgba(167, 139, 250, 0.3);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     overflow: hidden;
     animation: fadeInUp 0.8s ease-out;
@@ -446,7 +453,7 @@ body {
 
 .modal-header h2 {
     margin: 0;
-    background: linear-gradient(45deg, #64ffda, #ffffff);
+    background: linear-gradient(45deg, #a78bfa, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -461,10 +468,10 @@ body {
 }
 
 .info-section h3 {
-    color: #64ffda;
+    color: #a78bfa;
     margin-bottom: 15px;
     font-size: 1.1rem;
-    border-left: 3px solid #64ffda;
+    border-left: 3px solid #a78bfa;
     padding-left: 10px;
 }
 
@@ -476,7 +483,9 @@ body {
 }
 
 .modal-links {
-    margin: 25px 0;
+    display: grid;
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .modal-links .link-card {
@@ -501,7 +510,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.1), transparent);
     transition: left 0.6s;
 }
 
@@ -510,10 +519,10 @@ body {
 }
 
 .modal-links .link-card:hover {
-    background: rgba(100, 255, 218, 0.1);
-    border-color: #64ffda;
+    background: rgba(167, 139, 250, 0.1);
+    border-color: #a78bfa;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.2);
 }
 
 .modal-links .link-card i {
@@ -538,7 +547,7 @@ body {
 }
 
 .ascii-art pre {
-    color: #64ffda;
+    color: #a78bfa;
     font-family: 'Courier New', monospace;
     font-size: 0.7rem;
     line-height: 1.1;
